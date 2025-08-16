@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [Header("Network Settings")]
     [SerializeField] private AppDeviceType device;
 
-    private const int MAX_PLAYER_COUNT = 4;
+    private const int MAX_PLAYER_COUNT = 3;
     private const string ROOM_NAME = "myRoom";
     public const string HMD_NICKNAME = "hmd";
     //Player hmdPlayer;
@@ -62,15 +62,4 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("joined room");
     }
 
-    //public override void OnPlayerEnteredRoom(Player newPlayer)
-    //{
-    //    if (newPlayer.NickName == HMD_NICKNAME && hmdPlayer == null)
-    //        hmdPlayer = newPlayer;
-    //}
-
-    //public override void OnPlayerLeftRoom(Player otherPlayer)
-    //{
-    //    if (otherPlayer.NickName == HMD_NICKNAME && hmdPlayer != null)
-    //        hmdPlayer = null;
-    //}
 }

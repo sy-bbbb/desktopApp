@@ -103,7 +103,7 @@ public class OptiTrackRelativeStreamer : MonoBehaviourPun
                 data.hololensWorldRotation = new float[] { hololensWorldRot.x, hololensWorldRot.y, hololensWorldRot.z, hololensWorldRot.w };
             }
 
-            pv.RPC("ReceiveRelativeTransform", RpcTarget.Others, JsonUtility.ToJson(data));
+            pv.RPC("ReceiveRelativeTransform", studyConfigurationManager.HmdPlayer, JsonUtility.ToJson(data));
 
             lastRelativePosition = relativePosition;
             lastRelativeRotation = relativeRotation;

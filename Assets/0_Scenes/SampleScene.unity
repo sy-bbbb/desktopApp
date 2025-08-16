@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 167052474}
   - component: {fileID: 167052477}
   m_Layer: 0
-  m_Name: TransformControl
+  m_Name: '[TransformControl]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,10 +1010,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324dc428cd33e284d85ad07146e9447a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pID: 14
   participantID: P01
-  currentTask: 1
-  blockID: 1
-  currentCondition: 1
+  currentTask: 2
+  blockID: 4
+  currentCondition: 0
   sendConfigButton: 0
   statusText: {fileID: 2136554329}
 --- !u!114 &1699885129
@@ -1196,6 +1197,6 @@ SceneRoots:
   - {fileID: 1192186657}
   - {fileID: 1470272944}
   - {fileID: 347705934}
+  - {fileID: 167052473}
   - {fileID: 1276775374}
   - {fileID: 1699885130}
-  - {fileID: 167052473}

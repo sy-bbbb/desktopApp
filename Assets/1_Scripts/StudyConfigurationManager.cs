@@ -3,13 +3,16 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using System.Runtime.InteropServices;
 using TMPro;
+using UnityEngine;
+using static StudySettings;
 
 public class StudyConfigurationManager : MonoBehaviourPunCallbacks
 {
     [Header("Study Configuration")]
-    [SerializeField] private string participantID = "P01";
+    [SerializeField] private int pID = 0;
+    [SerializeField] private string participantID = "P0";
     [SerializeField] private StudySettings.Task currentTask = StudySettings.Task.task1;
     [SerializeField] private int blockID = 1;
     [SerializeField] private StudySettings.Condition currentCondition = StudySettings.Condition.Proximity;
@@ -25,6 +28,14 @@ public class StudyConfigurationManager : MonoBehaviourPunCallbacks
     private PhotonView pv;
 
     public Player HmdPlayer => hmdPlayer;
+
+    private int[,] conditionSet = new int[4, 4]
+    {
+        {1,2,4,3},
+        {2,3,1,4},
+        {3,4,2,1},
+        {4,1,3,2}
+    };
 
     void Start()
     {
@@ -109,6 +120,9 @@ public class StudyConfigurationManager : MonoBehaviourPunCallbacks
 
         if (pv != null)
         {
+            participantID = "P" + pID.ToString();
+            int conditionID = conditionSet[(pID - 1) % 4, blockID - 1] - 1;
+            currentCondition = (StudySettings.Condition)conditionID;
             pv.RPC("ReceiveStudyConfiguration", hmdPlayer, participantID, (int)currentTask, blockID, (int)currentCondition);
             UpdateStatusText($"Configuration sent!<br><br> <size=20> Participant : {participantID} <br> Task : {currentTask} <br> Block : {blockID} <br> CueType : {currentCondition} </size>");
         }
